@@ -1,0 +1,27 @@
+name: Bump
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bump
+        run: bash scripts/bump_version.sh '${{ github.event.head_commit.message }}'
+
+      - name: Commit
+        env:
+          CI_COMMIT_AUTHOR: bump_bot
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          git add package.json
+          git config --global user.name '${{ env.CI_COMMIT_AUTHOR }}'
+          git config --global user.email '${{ env.CI_COMMIT_AUTHOR }}@users.noreply.github.com'
+          git commit -m "bump version to $VERSION"
+          git push origin main

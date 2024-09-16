@@ -1,0 +1,16 @@
+name: Validate PR title
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate
+        run: bash scripts/validate_PR.sh '${{ github.event.pull_request.title }}'

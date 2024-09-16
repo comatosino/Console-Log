@@ -1,0 +1,26 @@
+{
+  "name": "console-log-client",
+  "author": "Robert Adams <r0b4dams@gmail.com>",
+  "repository": "git@github.com:r0b4dams/console-log.git",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext ts,tsx --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.4",
+    "graphql": "^16.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "vite": "^4.4.5"
+  }
+}
